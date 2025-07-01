@@ -10,8 +10,7 @@ Aplicación web desarrollada con **Flask** para una agencia de lotería provinci
 - 🕐 **Filtrado por horario**: previa, primero, matutina, vespertina y nocturna
 - 🖼️ **Generación automática de imágenes**
 - 🌐 **Interfaz web simple e intuitiva**
-- 🐳 **Containerización con Docker**
-- 📝 **Sistema de logs completo**
+
 
 ---
 
@@ -22,7 +21,7 @@ Aplicación web desarrollada con **Flask** para una agencia de lotería provinci
 - **Pillow (PIL)** — Para generar imágenes con los resultados
 - **Flask-Caching** — Sistema de caché
 - **HTML/CSS** — Para la interfaz visual
-- **Docker** — Containerización
+
 
 ---
 
@@ -54,15 +53,6 @@ docker build -t quiniela-app .
 docker run -p 5000:5000 -v $(pwd)/logs:/app/logs quiniela-app
 ```
 
----
-
-## 🌐 Acceso a la aplicación
-
-Una vez ejecutada, la aplicación estará disponible en:
-- **URL**: http://localhost:5000
-- **Puerto**: 5000
-
----
 
 ## 📁 Estructura del proyecto
 
@@ -86,47 +76,7 @@ quiniela/
 
 ## 🔧 Variables de entorno
 
-Puedes configurar las siguientes variables de entorno:
-
 - `SECRET_KEY`: Clave secreta para Flask (por defecto: 'dev')
 - `CHROMIUM_PATH`: Ruta al ejecutable de Chrome
 - `FLASK_ENV`: Entorno de Flask (development/production)
 
----
-
-## 📝 Logs
-
-Los logs se guardan en el directorio `logs/` y también se muestran en la consola.
-
----
-
-## 🚀 Despliegue en producción
-
-Para producción, se recomienda:
-
-1. Cambiar `SECRET_KEY` por una clave segura
-2. Configurar `FLASK_ENV=production`
-3. Usar un servidor WSGI como Gunicorn
-4. Configurar un proxy reverso (nginx)
-
----
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
-
----
-
-## 🆘 Soporte
-
-Si tienes problemas o preguntas, por favor abre un issue en GitHub.
