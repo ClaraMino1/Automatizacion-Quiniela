@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  quiniela-app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/app/logs
+      - ./resources:/app/resources
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - CHROMIUM_PATH=/usr/bin/google-chrome
+    restart: unless-stopped
+    container_name: quiniela-app 
