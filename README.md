@@ -27,7 +27,7 @@ Aplicación web desarrollada con **Flask** para una agencia de lotería provinci
 
 ## 🐳 Ejecutar con Docker
 
-### Usando Docker Compose (Recomendado)
+### Usando Docker Compose
 
 ```bash
 # Construir y ejecutar la aplicación
@@ -43,15 +43,7 @@ docker-compose logs -f
 docker-compose down
 ```
 
-### Usando Docker directamente
 
-```bash
-# Construir la imagen
-docker build -t quiniela-app .
-
-# Ejecutar el contenedor
-docker run -p 5000:5000 -v $(pwd)/logs:/app/logs quiniela-app
-```
 
 
 ## 📁 Estructura del proyecto
