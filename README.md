@@ -7,8 +7,8 @@ Aplicación web desarrollada con **Flask** para una agencia de lotería provinci
 ##  Características
 
 - 🔄 **Actualización automática** de los resultados.
-- 🕐 **Filtrado por horario**: previa, primera, matutina, vespertina y nocturna.
-- 🖼️ **Generación automática de imágenes** con diseño profesional.
+- 🕐 **Filtrado por horario**: previa, primero, matutina, vespertina y nocturna.
+- 🖼️ **Generación automática de imágenes**.
 - 🌐 **Interfaz web simple e intuitiva**.
 
 ---
