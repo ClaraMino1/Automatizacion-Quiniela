@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from PIL import Image, ImageDraw, ImageFont
 
 # Configuración de logging
@@ -19,16 +18,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 logger.info(f"BASE_DIR (ubicación del script): {BASE_DIR}")
 
 # Directorio donde se encuentran las plantillas
-
-
 TEMPLATES_DIR = os.path.normpath(os.path.join(BASE_DIR, '..', '..', 'resources', 'templates'))
 logger.info(f"TEMPLATES_DIR (ubicación de plantillas): {TEMPLATES_DIR}")
 
 # Directorio donde se guardarán las imágenes generadas.
-
 STATIC_OUTPUT_DIR = os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
 logger.info(f"STATIC_OUTPUT_DIR (ubicación de salida de imágenes): {STATIC_OUTPUT_DIR}")
-
 
 def crear_driver_headless():
     options = webdriver.ChromeOptions()
@@ -48,15 +43,13 @@ def crear_driver_headless():
     options.add_argument("--log-level=3")
     options.add_argument("--silent")
 
-    chromium_path = os.getenv("CHROMIUM_PATH")
-    if chromium_path and os.path.exists(chromium_path):
-        options.binary_location = chromium_path
-        logger.info(f"Usando Chrome en: {chromium_path}")
-    else:
-        logger.warning("Variable de entorno CHROMIUM_PATH no definida o ruta no válida. Usando ChromeDriverManager.")
+    # ubicación del ejecutable de Chrome
+    options.binary_location = "/usr/bin/google-chrome"
+
+    #usar chromedriver ya instalado en la imagen
+    service = Service("/usr/local/bin/chromedriver")
 
     try:
-        service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         logger.info("Driver de Chrome creado exitosamente.")
         return driver
@@ -152,7 +145,7 @@ def generar_resultados_horario(selected_horario=None):
         font_path = os.path.join(BASE_DIR, '..', '..', 'resources', 'fonts', "Pragmatica-Condensed-Bold.ttf")
         
         if os.path.exists(font_path):
-            font = ImageFont.truetype(font_path, 100) # Tamaño de fuente inicial (puedes ajustarlo)
+            font = ImageFont.truetype(font_path, 100) # Tamaño de fuente
             logger.info(f"Fuente cargada exitosamente desde: {font_path} con tamaño 250.")
         else:
             logger.warning(f"Archivo de fuente NO ENCONTRADO en: {font_path}. Usando fuente por defecto. Asegúrate de que la ruta sea correcta.")
@@ -175,9 +168,8 @@ def generar_resultados_horario(selected_horario=None):
     logger.info(f"Asegurado que el directorio de salida existe en: {STATIC_OUTPUT_DIR}")
 
     for titulo, datos in formateados.items():
-        slug = titulo.replace(' ', '_').lower()
         
-        plantilla_filename = f"plantilla_{slug}.png"
+        plantilla_filename = f"plantilla.png"
         plantilla_path = os.path.join(TEMPLATES_DIR, plantilla_filename)
         
         # El archivo de salida se guarda en STATIC_OUTPUT_DIR con el mismo nombre.
