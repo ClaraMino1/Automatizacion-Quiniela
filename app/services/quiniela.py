@@ -25,7 +25,7 @@ logger.info(f"TEMPLATES_DIR (ubicación de plantillas): {TEMPLATES_DIR}")
 STATIC_OUTPUT_DIR = os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
 logger.info(f"STATIC_OUTPUT_DIR (ubicación de salida de imágenes): {STATIC_OUTPUT_DIR}")
 
-def crear_driver_headless():
+def crear_driver_headless(): #Crea un navegador Chrome sin interfaz gráfica (modo headless)
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
@@ -58,6 +58,7 @@ def crear_driver_headless():
         return None
 
 def generar_resultados_horario(selected_horario=None):
+    #abre el sitio web,espera a que carguen elementos y extrae los horarios y resultados
     logger.info(f"Generando resultados para horario: {selected_horario if selected_horario else 'todos'}")
     driver = crear_driver_headless()
     if driver is None:
@@ -92,7 +93,7 @@ def generar_resultados_horario(selected_horario=None):
                 label = label_elem.text.strip()
                 nums = [p.text.strip() for p in row.find_elements(By.CSS_SELECTOR, '.c')]
                 if label and nums:
-                    prov_data[label] = nums
+                    prov_data[label] = nums # Guarda los resultados por provincia
                 else:
                     logger.warning(f"Fila sabatini sin label o números: {row.text}")
             except Exception as e:
@@ -146,7 +147,7 @@ def generar_resultados_horario(selected_horario=None):
         
         if os.path.exists(font_path):
             font = ImageFont.truetype(font_path, 100) # Tamaño de fuente
-            logger.info(f"Fuente cargada exitosamente desde: {font_path} con tamaño 250.")
+            logger.info(f"Fuente cargada exitosamente desde: {font_path} con tamaño 100.")
         else:
             logger.warning(f"Archivo de fuente NO ENCONTRADO en: {font_path}. Usando fuente por defecto. Asegúrate de que la ruta sea correcta.")
             font = ImageFont.load_default()
