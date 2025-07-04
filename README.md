@@ -33,9 +33,6 @@ Aplicación web desarrollada con **Flask** para una agencia de lotería provinci
 # Construir y ejecutar la aplicación
 docker-compose up --build
 
-# Ejecutar en segundo plano
-docker-compose up -d --build
-
 # Ver logs
 docker-compose logs -f
 
@@ -55,9 +52,10 @@ quiniela/
 │   ├── routes.py          # Rutas de la aplicación
 │   ├── services/          # Servicios de negocio
 │   ├── static/            # Archivos estáticos
-│   └── templates/         # Plantillas HTML
+│   └── templates/         # HTML
 ├── logs/                  # Archivos de log
-├── resources/             # Recursos (drivers, fonts, templates)
+|──  bin                    # Chromedriver
+├── resources/             # Recursos (fonts, templates)
 ├── Dockerfile            # Configuración de Docker
 ├── docker-compose.yml    # Configuración de Docker Compose
 ├── requirements.txt      # Dependencias de Python
