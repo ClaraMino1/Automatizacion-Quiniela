@@ -34,9 +34,7 @@ logs/
 .env.*
 
 # Archivos generados
-static/
 outputs/
-*.png
 
 # Chrome driver
 chromedriver.exe
