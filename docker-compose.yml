@@ -6,6 +6,8 @@ services:
     ports:
       - "5000:5000"
     volumes:
+      - .:/app         # Monta tu proyecto local en /app del contenedor
+      - /app/__pycache__  #  evita que los __pycache__ locales molesten
       - ./logs:/app/logs
       - ./resources:/app/resources
     environment:
