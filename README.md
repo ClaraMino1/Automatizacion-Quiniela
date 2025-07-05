@@ -1,3 +1,5 @@
+![preview-1](/app/static/media/preview.png)
+![preview-2](/app/static/media/preview-2.png)
 # 🧾 Automatización Quiniela
 
 Aplicación web desarrollada con **Flask** para una agencia de lotería provincial. Automatiza la obtención de los resultados de la quiniela y genera una imagen con diseño personalizado, lista para compartir o imprimir.
