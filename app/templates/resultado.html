@@ -15,12 +15,9 @@
     
     <title>Resultado Generado</title>
 </head>
-<body id="body-resultado">
-    <h1>Imagen Generada</h1>
+<body id="body-resultado" class="body-index">
     
     <img src="{{ url_for('static', filename=imagen) }}" alt="Resultado Quiniela">
-
-  
 
     <div class="botones-resultado">
       <a href="{{ url_for('main.index') }}">Generar otro horario</a>
@@ -28,7 +25,6 @@
         Descargar imagen
       </a>
   </div>
-
 
 </body>
 </html>
